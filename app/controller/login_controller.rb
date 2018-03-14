@@ -13,9 +13,7 @@ class LoginController < RootController
   # POST /login
   #
   def create
-    if params['login'] == LOGIN && params['password'] == PASSWORD
-      return response('ok')
-    end
+    return log_in if valid_credentials?
 
     not_allowed
   end
@@ -35,7 +33,13 @@ class LoginController < RootController
     '
   end
 
-  def not_allowed
-    response('You shall not pass', status: 403)
+  def valid_credentials?
+    params['login'] == LOGIN && params['password'] == PASSWORD
+  end
+
+  def log_in
+    session[:user_login] = LOGIN
+
+    response('logged in')
   end
 end

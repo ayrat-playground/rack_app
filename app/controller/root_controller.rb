@@ -27,4 +27,12 @@ class RootController
   def params
     request.params
   end
+
+  def session
+    request.session
+  end
+
+  def not_allowed
+    response('You shall not pass', status: 403)
+  end
 end
