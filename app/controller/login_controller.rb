@@ -10,6 +10,8 @@ class LoginController < RootController
     response login_page
   end
 
+  # POST /login
+  #
   def create
     if params['login'] == LOGIN && params['password'] == PASSWORD
       return response('ok')
