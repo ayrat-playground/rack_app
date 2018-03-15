@@ -2,7 +2,7 @@ require_relative './root_controller.rb'
 
 class SecretController < RootController
   def index
-    return response('my precious') if authenticated?
+    return response if authenticated?
 
     not_allowed
   end

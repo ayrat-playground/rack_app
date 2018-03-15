@@ -4,12 +4,6 @@ class LoginController < RootController
   LOGIN = 'gendalf'.freeze
   PASSWORD = 'white'.freeze
 
-  # GET /login
-  #
-  def index
-    response login_page
-  end
-
   # POST /login
   #
   def create
@@ -20,19 +14,6 @@ class LoginController < RootController
 
   private
 
-  def login_page
-    '
-     <form action="/login" method="post">
-       Name:<br>
-       <input type="login" name="login"><br>
-       Password:<br>
-       <input type="password" name="password">
-       <br>
-       <input type="submit" value="Login">
-     </form>
-    '
-  end
-
   def valid_credentials?
     params['login'] == LOGIN && params['password'] == PASSWORD
   end
@@ -40,6 +21,6 @@ class LoginController < RootController
   def log_in
     session[:user_login] = LOGIN
 
-    response('logged in')
+    response
   end
 end
